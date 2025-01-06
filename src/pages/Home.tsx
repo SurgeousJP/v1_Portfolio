@@ -100,8 +100,9 @@ function Home() {
           <FileUser size={24} />
         </div>
       </aside>
-      <main className="flex flex-col gap-4">
-        <article id="about" className="leading-normal flex-1">
+      <main className="flex flex-col gap-8">
+        <article id="overview" className="leading-normal flex-1">
+          <span className="block mb-4 font-bold text-secondary text-lg md:hidden">Overview</span>
           <p className="flex-1">
             I am an upcoming graduate pursuing a Bachelor’s degree in Software
             Engineering at the University of Information Technology (UIT). I have hands-on experience in building RESTful APIs using .NET Core
@@ -111,6 +112,7 @@ function Home() {
           </p>
         </article>
         <section id="skills">
+        <span className="block mb-4 font-bold text-secondary text-lg md:hidden">Skills</span>
           {skills.map((skill) => {
             return (
               <div className="flex flex-row gap-2 items-center">
@@ -130,7 +132,8 @@ function Home() {
             );
           })}
         </section>
-        <section id="experience" className="mb-8">
+        <section id="experience" className="mb-4">
+        <span className="block mb-4 font-bold text-secondary text-lg md:hidden">Experience</span>
           {experiences.map((experience) => {
             return (
               <Experience
@@ -144,6 +147,7 @@ function Home() {
           })}
         </section>
         <section id="projects">
+        <span className="block mb-4 font-bold text-secondary text-lg md:hidden">Projects</span>
           {projects.map((project, index) => {
             return (
               <Project
