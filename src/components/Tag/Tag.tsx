@@ -5,5 +5,5 @@ interface Props {
 }
 
 export const Tag: React.FC<Props> = ({ content }) => {
-  return <div className="text-white bg-primary font-semibold px-3 py-1 rounded-2xl ">{content}</div>;
+  return <div className="text-white bg-primary font-medium px-3 py-1 rounded-2xl text-md">{content}</div>;
 };

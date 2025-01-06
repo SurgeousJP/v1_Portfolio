@@ -14,17 +14,17 @@ function Home() {
 
   const skills = [
     {
-      icon: <SquareCode />,
+      icon: <SquareCode size={18} className="hidden md:inline" />,
       label: "Programming languages",
       skillItem: ["C#", "JavaScript", "TypeScript", "HTML/CSS", "Python"],
     },
     {
-      icon: <Ellipsis />,
+      icon: <Ellipsis size={18} className="hidden md:inline"  />,
       label: "Additional skills",
       skillItem: ["Git", "Github", "CI/CD", "Github Action"],
     },
     {
-      icon: <UserRoundCog />,
+      icon: <UserRoundCog size={18} className="hidden md:inline" />,
       label: "Soft skills",
       skillItem: [
         "Problem Solving",
@@ -38,7 +38,7 @@ function Home() {
 
   const experiences = [
     {
-      time: "September 2024 – November 2024",
+      time: "Sep 2024 – Nov 2024",
       position: ".NET Developer Intern",
       company: "HQSoft",
       description:
@@ -84,34 +84,27 @@ function Home() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen max-w-6xl flex flex-col md:flex-row scroll-smooth smooth-transition px-6 py-6 mx-auto">
       <aside id="navigator" className="">
-        <span className="block">Nguyen Tuan Bao</span>
-        <span className="block">Backend Developer</span>
-        <div id="nav-steps" className="flex flex-col gap-2">
+        <span className="block text-4xl font-bold leading-tight">Nguyen Tuan Bao</span>
+        <span className="block text-xl leading-snug text-secondary opacity-75 mb-4 mt-1 font-medium">Backend Developer</span>
+        <div id="nav-steps" className="hidden md:flex flex-col gap-2">
           {steps.map((step) => {
-            return <span>{step}</span>;
+            return <span className="font-bold text-xs">{step}</span>;
           })}
         </div>
-        <div id="contacts" className="flex flex-row gap-2">
-          <Github />
-          <Linkedin />
-          <MailPlus />
-          <FileUser />
+        <div id="contacts" className="hidden md:flex flex-row gap-2">
+          <Github size={24} />
+          <Linkedin size={24}/>
+          <MailPlus size={24}/>
+          <FileUser size={24} />
         </div>
       </aside>
       <main className="flex flex-col gap-4">
-        <article id="about">
-          <p>
+        <article id="about" className="leading-normal flex-1">
+          <p className="flex-1">
             I am an upcoming graduate pursuing a Bachelor’s degree in Software
-            Engineering at the University of Information Technology (UIT), with
-            an expected graduation date of June 2025. Currently, I have achieved
-            a GPA of 8.71/10. Apart from my academic achievements, I possess
-            strong English proficiency, with an IELTS Academic Band Score of
-            7.5, including a perfect score of 9.0 in Reading.
-          </p>
-          <p>
-            I have hands-on experience in building RESTful APIs using .NET Core
+            Engineering at the University of Information Technology (UIT). I have hands-on experience in building RESTful APIs using .NET Core
             and developing front-end applications with React and Typescript.
             Additionally, I have a basic understanding of Python, which I have
             applied to several projects.
@@ -120,7 +113,7 @@ function Home() {
         <section id="skills">
           {skills.map((skill) => {
             return (
-              <div className="flex flex-row gap-2">
+              <div className="flex flex-row gap-2 items-center">
                 {skill.icon}
                 <p>
                   {skill.label}:{" "}
@@ -137,7 +130,7 @@ function Home() {
             );
           })}
         </section>
-        <section id="experience">
+        <section id="experience" className="mb-8">
           {experiences.map((experience) => {
             return (
               <Experience
@@ -151,7 +144,7 @@ function Home() {
           })}
         </section>
         <section id="projects">
-          {projects.map((project) => {
+          {projects.map((project, index) => {
             return (
               <Project
                 imgSrc={project.image}
@@ -159,6 +152,7 @@ function Home() {
                 position={project.position}
                 description={project.description}
                 technologies={project.technologies}
+                isLastItem={index === projects.length - 1}
               />
             );
           })}

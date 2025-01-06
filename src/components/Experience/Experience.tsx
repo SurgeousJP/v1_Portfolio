@@ -17,12 +17,12 @@ export const Experience: React.FC<Props> = ({
   description,
   technologies,
 }) => {
-  return <div className="flex flex-row items-start">
-    <span className="inline-block w-[250px]">{time}</span>
-    <div className="flex-1">
-      <div className="block">
-        <span>{position} · {company}</span>
-        <ExternalLink className="inline-block" />
+  return <div className="flex flex-col md:flex-row items-start cursor-pointer">
+    <span className="inline-block w-[250px] text-md text-secondary opacity-75 font-semibold mb-1 md:mb-0">{time}</span>
+    <div className="flex-1 gap-2 flex flex-col">
+      <div className="flex items-center gap-2">
+        <span className="font-bold">{position} · {company}</span>
+        <ExternalLink size={14} className="inline-block" />
       </div>
       <p>{description}</p>
       <div className="flex flex-row mt-2 gap-2 flex-wrap">
