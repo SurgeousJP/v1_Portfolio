@@ -5,23 +5,11 @@ import {
   Linkedin,
   MailPlus,
   SquareCode,
-  Sun,
   SunMoon,
   UserRoundCog,
 } from "lucide-react";
 import { Experience, Project } from "@/components";
 import { useEffect, useState } from "react";
-
-function isInViewport(element: any) {
-  const rect = element.getBoundingClientRect();
-  return (
-    rect.top >= 0 &&
-    rect.left >= 0 &&
-    rect.bottom <=
-      (window.innerHeight || document.documentElement.clientHeight) &&
-    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-  );
-}
 
 function Home() {
   const steps = ["OVERVIEW", "SKILLS", "EXPERIENCE", "PROJECTS"];
@@ -114,7 +102,7 @@ function Home() {
     console.log(activeSection);
   }, [activeSection]);
 
-  const handleDarkMode = (e) => {
+  const handleDarkMode = (e: any) => {
     console.log("Dark mode button clicked !");
   }
 
