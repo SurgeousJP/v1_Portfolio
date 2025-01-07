@@ -5,6 +5,8 @@ import {
   Linkedin,
   MailPlus,
   SquareCode,
+  Sun,
+  SunMoon,
   UserRoundCog,
 } from "lucide-react";
 import { Experience, Project } from "@/components";
@@ -112,11 +114,18 @@ function Home() {
     console.log(activeSection);
   }, [activeSection]);
 
+  const handleDarkMode = (e) => {
+    console.log("Dark mode button clicked !");
+  }
+
   return (
-    <div className="min-h-screen max-w-6xl flex flex-col md:flex-row scroll-smooth smooth-transition px-6 py-6 mx-auto relative">
+    <div className="min-h-screen max-w-7xl flex flex-col md:flex-row scroll-smooth smooth-transition px-6 py-6 pt-12 mx-auto relative">
+      <button className="w-9 h-9 bg-[#d9d9d9] rounded-lg fixed bottom-[20px] left-[20px] flex items-center cursor-pointer z-50 outline-none" onClick={handleDarkMode}>
+        <SunMoon className="w-[24px] h-[24px] text-black  mx-auto cursor-pointer hover:opacity-50"/>
+      </button>
       <aside
         id="navigator"
-        className="h-full md:w-[280px] md:fixed md:z-1 md:top-0 md:pr-6 md:pt-6"
+        className="h-full md:w-[280px] md:fixed md:z-1 md:top-0 md:pr-6 md:pt-12"
       >
         <span className="block text-3xl font-bold leading-tight">
           Nguyen Tuan Bao
@@ -165,7 +174,10 @@ function Home() {
               className="cursor-pointer hover:text-secondary hover:opacity-75"
             />
           </a>
-          <a href="https://drive.google.com/file/d/1ninJQWzDxiBrimO2HEijklqAtmgrY_4u/view?usp=sharing" target="_blank">
+          <a
+            href="https://drive.google.com/file/d/1ninJQWzDxiBrimO2HEijklqAtmgrY_4u/view?usp=sharing"
+            target="_blank"
+          >
             <FileUser
               size={24}
               className="cursor-pointer hover:text-secondary hover:opacity-75"
@@ -210,7 +222,7 @@ function Home() {
             );
           })}
         </section>
-        <section id="experience" className="mb-4">
+        <section id="experience" className="">
           <span className="block mb-4 font-bold text-secondary text-lg md:hidden">
             Experience
           </span>
