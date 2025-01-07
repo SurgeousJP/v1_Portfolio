@@ -102,7 +102,7 @@ function Home() {
     console.log(activeSection);
   }, [activeSection]);
 
-  const handleDarkMode = (e: any) => {
+  const handleDarkMode = () => {
     console.log("Dark mode button clicked !");
   }
 
