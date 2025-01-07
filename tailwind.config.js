@@ -13,8 +13,6 @@ export default {
       xl: "1280px", // Extra large devices (min-width: 1280px)
       "2xl": "1536px", // 2X extra large devices (min-width: 1536px)
       // Custom breakpoints
-      tablet: "640px", // Custom breakpoint for tablet
-      desktop: "1024px", // Custom breakpoint for desktop
     },
     extend: {
       gridTemplateColumns: {

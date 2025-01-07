@@ -16,9 +16,9 @@ export const Project: React.FC<Props> = ({imgSrc, name, position, description, t
   return <div className={`flex flex-col md:flex-row items-start cursor-pointer ${!isLastItem ? "mb-8" : ""}`}>
     <img src={imgSrc} className="block w-full md:w-[250px] object-cover rounded-lg mb-2 md:mb-0" />
     <div className="flex-1 gap-2 flex flex-col">
-      <div className="flex items-center gap-2">
-        <span className='font-bold'>{name}</span>
-        <ExternalLink size={14} className="inline-block" />
+      <div className="inline-flex items-center gap-2">
+        <span className='font-bold'>{name}        <ExternalLink size={14} className="inline-block w-[14px] h-[14px]" />
+        </span>
       </div>
       <span className='text-secondary font-medium'>{position}</span>
       <p>{description}</p>

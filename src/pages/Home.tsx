@@ -8,23 +8,35 @@ import {
   UserRoundCog,
 } from "lucide-react";
 import { Experience, Project } from "@/components";
+import { useEffect, useState } from "react";
+
+function isInViewport(element: any) {
+  const rect = element.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <=
+      (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+}
 
 function Home() {
-  const steps = ["ABOUT", "SKILLS", "EXPERIENCE", "PROJECTS"];
+  const steps = ["OVERVIEW", "SKILLS", "EXPERIENCE", "PROJECTS"];
 
   const skills = [
     {
-      icon: <SquareCode size={18} className="hidden md:inline" />,
+      icon: <SquareCode size={18} className="hidden md:inline md:mt-1" />,
       label: "Programming languages",
       skillItem: ["C#", "JavaScript", "TypeScript", "HTML/CSS", "Python"],
     },
     {
-      icon: <Ellipsis size={18} className="hidden md:inline"  />,
+      icon: <Ellipsis size={18} className="hidden md:inline md:mt-1" />,
       label: "Additional skills",
       skillItem: ["Git", "Github", "CI/CD", "Github Action"],
     },
     {
-      icon: <UserRoundCog size={18} className="hidden md:inline" />,
+      icon: <UserRoundCog size={18} className="hidden md:inline md:mt-1" />,
       label: "Soft skills",
       skillItem: [
         "Problem Solving",
@@ -83,39 +95,105 @@ function Home() {
     },
   ];
 
+  const [activeSection, setActiveSection] = useState("overview");
+
+  useEffect(() => {
+    const sectionEls = document.querySelectorAll("section");
+    window.addEventListener("scroll", () => {
+      sectionEls.forEach((sectionEl) => {
+        if (window.scrollY >= sectionEl.offsetTop - 20) {
+          setActiveSection(sectionEl.id);
+        }
+      });
+    });
+  }, []);
+
+  useEffect(() => {
+    console.log(activeSection);
+  }, [activeSection]);
+
   return (
-    <div className="min-h-screen max-w-6xl flex flex-col md:flex-row scroll-smooth smooth-transition px-6 py-6 mx-auto">
-      <aside id="navigator" className="">
-        <span className="block text-4xl font-bold leading-tight">Nguyen Tuan Bao</span>
-        <span className="block text-xl leading-snug text-secondary opacity-75 mb-4 mt-1 font-medium">Backend Developer</span>
-        <div id="nav-steps" className="hidden md:flex flex-col gap-2">
-          {steps.map((step) => {
-            return <span className="font-bold text-xs">{step}</span>;
-          })}
+    <div className="min-h-screen max-w-6xl flex flex-col md:flex-row scroll-smooth smooth-transition px-6 py-6 mx-auto relative">
+      <aside
+        id="navigator"
+        className="h-full md:w-[280px] md:fixed md:z-1 md:top-0 md:pr-6 md:pt-6"
+      >
+        <span className="block text-3xl font-bold leading-tight">
+          Nguyen Tuan Bao
+        </span>
+        <span className="block text-xl leading-snug text-secondary opacity-75 mb-[60px] mt-1 font-medium">
+          Backend Developer
+        </span>
+        <div id="nav-steps" className="hidden md:flex flex-col gap-2 mb-[60px]">
+          <div className="">
+            <ul className="vertical-steps smooth-transition">
+              {steps.map((step) => {
+                return (
+                  <a className="nav-link" href={`#${step.toLowerCase()}`}>
+                    <li
+                      className={`font-bold text-xs ${
+                        activeSection === step.toLowerCase() ? "active" : ""
+                      }`}
+                    >
+                      {step}
+                    </li>
+                  </a>
+                );
+              })}
+            </ul>
+          </div>
         </div>
-        <div id="contacts" className="hidden md:flex flex-row gap-2">
-          <Github size={24} />
-          <Linkedin size={24}/>
-          <MailPlus size={24}/>
-          <FileUser size={24} />
+        <div id="contacts" className="hidden md:flex flex-row gap-4 mt-4">
+          <a href="https://github.com/SurgeousJP" target="_blank">
+            <Github
+              size={24}
+              className="cursor-pointer hover:text-secondary hover:opacity-75"
+            />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/tuanbaonguyen2311"
+            target="_blank"
+          >
+            <Linkedin
+              size={24}
+              className="cursor-pointer hover:text-secondary hover:opacity-75"
+            />
+          </a>
+          <a href="mailto:baosurgeous@gmail.com" target="_blank">
+            <MailPlus
+              size={24}
+              className="cursor-pointer hover:text-secondary hover:opacity-75"
+            />
+          </a>
+          <a href="https://drive.google.com/file/d/1ninJQWzDxiBrimO2HEijklqAtmgrY_4u/view?usp=sharing" target="_blank">
+            <FileUser
+              size={24}
+              className="cursor-pointer hover:text-secondary hover:opacity-75"
+            />
+          </a>
         </div>
       </aside>
-      <main className="flex flex-col gap-8">
-        <article id="overview" className="leading-normal flex-1">
-          <span className="block mb-4 font-bold text-secondary text-lg md:hidden">Overview</span>
+      <main className="relative md:ml-[280px] flex flex-col gap-8 md:pl-6">
+        <section id="overview" className="leading-normal flex-1">
+          <span className="block mb-4 font-bold text-secondary text-lg md:hidden">
+            Overview
+          </span>
           <p className="flex-1">
             I am an upcoming graduate pursuing a Bachelor’s degree in Software
-            Engineering at the University of Information Technology (UIT). I have hands-on experience in building RESTful APIs using .NET Core
+            Engineering at the University of Information Technology (UIT). I
+            have hands-on experience in building RESTful APIs using .NET Core
             and developing front-end applications with React and Typescript.
             Additionally, I have a basic understanding of Python, which I have
             applied to several projects.
           </p>
-        </article>
+        </section>
         <section id="skills">
-        <span className="block mb-4 font-bold text-secondary text-lg md:hidden">Skills</span>
+          <span className="block pt-4 mb-4 font-bold text-secondary text-lg md:hidden">
+            Skills
+          </span>
           {skills.map((skill) => {
             return (
-              <div className="flex flex-row gap-2 items-center">
+              <div className="flex flex-row gap-2 md:items-start lg:items-center">
                 {skill.icon}
                 <p>
                   {skill.label}:{" "}
@@ -133,7 +211,9 @@ function Home() {
           })}
         </section>
         <section id="experience" className="mb-4">
-        <span className="block mb-4 font-bold text-secondary text-lg md:hidden">Experience</span>
+          <span className="block mb-4 font-bold text-secondary text-lg md:hidden">
+            Experience
+          </span>
           {experiences.map((experience) => {
             return (
               <Experience
@@ -147,7 +227,9 @@ function Home() {
           })}
         </section>
         <section id="projects">
-        <span className="block mb-4 font-bold text-secondary text-lg md:hidden">Projects</span>
+          <span className="block mb-4 font-bold text-secondary text-lg md:hidden">
+            Projects
+          </span>
           {projects.map((project, index) => {
             return (
               <Project

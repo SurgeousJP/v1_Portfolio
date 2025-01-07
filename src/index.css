@@ -5,3 +5,40 @@
 .smooth-transition {
   transition: all 0.5s ease;
 }
+
+html {
+  scroll-padding-top: 35px; /* Adjust as needed */
+  scroll-behavior: smooth;
+}
+
+a {
+  all: unset; /* Resets all styles (inherits none) */
+  text-decoration: none; /* Removes underline */
+  color: inherit; /* Matches parent text color */
+}
+
+ul.vertical-steps {
+  text-align: justify;
+  position: relative;
+  overflow: hidden;
+}
+
+ul.vertical-steps li {
+  display: block;
+  padding-block: 16px;
+  padding-left: 16px;
+  border-left: 1px solid #dbe2eb;
+  cursor: pointer;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+ul.vertical-steps li:hover{
+  border-left: 2px solid rgba(63,75,89, 0.75);
+  background-color: #dde6f9;
+}
+
+ul.vertical-steps li.active {
+  border-left: 2px solid #0057ff;
+  background-color: #dde6f9;
+}
