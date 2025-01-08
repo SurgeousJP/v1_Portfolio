@@ -5,6 +5,7 @@ import {
   Linkedin,
   MailPlus,
   SquareCode,
+  Sun,
   SunMoon,
   UserRoundCog,
 } from "lucide-react";
@@ -102,23 +103,47 @@ function Home() {
     console.log(activeSection);
   }, [activeSection]);
 
-  const handleDarkMode = () => {
-    console.log("Dark mode button clicked !");
+  const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem('theme') === 'dark' || false);
+
+  const enableDarkMode = () => {
+    document.body.classList.add('dark-mode');
+    localStorage.setItem("theme", "dark");
   }
+
+  const disableDarkMode = () => {
+    document.body.classList.remove('dark-mode');
+    localStorage.setItem("theme", "light");
+  }
+
+  const toggleDarkMode = () => {
+    console.log(!isDarkMode);
+    setIsDarkMode(!isDarkMode);
+  };
+
+  useEffect(() => {
+    isDarkMode ? enableDarkMode() : disableDarkMode();
+  }, [isDarkMode]);
 
   return (
     <div className="min-h-screen max-w-7xl flex flex-col md:flex-row scroll-smooth smooth-transition px-6 py-6 pt-12 mx-auto relative">
-      <button className="w-9 h-9 bg-[#d9d9d9] rounded-lg fixed bottom-[20px] left-[20px] flex items-center cursor-pointer z-50 outline-none" onClick={handleDarkMode}>
-        <SunMoon className="w-[24px] h-[24px] text-black  mx-auto cursor-pointer hover:opacity-50"/>
-      </button>
       <aside
         id="navigator"
-        className="h-full md:w-[280px] md:fixed md:z-1 md:top-0 md:pr-6 md:pt-12"
+        className="h-full md:w-[280px] md:fixed md:z-1 md:top-0 md:pr-6 md:pt-12 relative"
       >
+        <button
+          className="w-9 h-9 bg-white border-1 border-gray-300 rounded-lg absolute top-0 right-0 md:bottom-[20px] md:left-0 md:top-auto md:right-auto flex items-center cursor-pointer z-50 outline-none "
+          onClick={toggleDarkMode}
+        >
+          {isDarkMode ? (
+            <SunMoon className="w-[24px] h-[24px] text-black  mx-auto cursor-pointer md:hover:opacity-50" />
+          ) : (
+            <Sun className="w-[24px] h-[24px] text-[#888888] mx-auto cursor-pointer md:hover:text-white" />
+          )}
+        </button>
         <span className="block text-3xl font-bold leading-tight">
           Nguyen Tuan Bao
         </span>
-        <span className="block text-xl leading-snug text-secondary opacity-75 mb-[60px] mt-1 font-medium">
+        <span className={`block text-xl leading-snug text-secondary opacity-75 mb-[60px] mt-1 font-medium ${isDarkMode ? "tertiary-dark-mode-text" : ""}`}>
           Backend Developer
         </span>
         <div id="nav-steps" className="hidden md:flex flex-col gap-2 mb-[60px]">
@@ -144,7 +169,7 @@ function Home() {
           <a href="https://github.com/SurgeousJP" target="_blank">
             <Github
               size={24}
-              className="cursor-pointer hover:text-secondary hover:opacity-75"
+              className="cursor-pointer hover:text-secondary md:hover:opacity-75"
             />
           </a>
           <a
@@ -153,13 +178,13 @@ function Home() {
           >
             <Linkedin
               size={24}
-              className="cursor-pointer hover:text-secondary hover:opacity-75"
+              className="cursor-pointer hover:text-secondary md:hover:opacity-75"
             />
           </a>
           <a href="mailto:baosurgeous@gmail.com" target="_blank">
             <MailPlus
               size={24}
-              className="cursor-pointer hover:text-secondary hover:opacity-75"
+              className="cursor-pointer hover:text-secondary md:hover:opacity-75"
             />
           </a>
           <a
@@ -168,14 +193,14 @@ function Home() {
           >
             <FileUser
               size={24}
-              className="cursor-pointer hover:text-secondary hover:opacity-75"
+              className="cursor-pointer hover:text-secondary md:hover:opacity-75"
             />
           </a>
         </div>
       </aside>
       <main className="relative md:ml-[280px] flex flex-col gap-8 md:pl-6">
-        <section id="overview" className="leading-normal flex-1">
-          <span className="block mb-4 font-bold text-secondary text-lg md:hidden">
+        <section id="overview" className="leading-normal flex-1 mb-8">
+          <span className={`block mb-4 font-bold text-secondary text-lg md:hidden ${isDarkMode ? "section-heading-dark-mode-text" : ""}`}>
             Overview
           </span>
           <p className="flex-1">
@@ -187,8 +212,8 @@ function Home() {
             applied to several projects.
           </p>
         </section>
-        <section id="skills">
-          <span className="block pt-4 mb-4 font-bold text-secondary text-lg md:hidden">
+        <section id="skills" className="mb-8">
+          <span className={`block mb-4 font-bold text-secondary text-lg md:hidden ${isDarkMode ? "section-heading-dark-mode-text" : ""}`}>
             Skills
           </span>
           {skills.map((skill) => {
@@ -210,8 +235,8 @@ function Home() {
             );
           })}
         </section>
-        <section id="experience" className="">
-          <span className="block mb-4 font-bold text-secondary text-lg md:hidden">
+        <section id="experience" className="mb-8">
+          <span className={`block mb-4 font-bold text-secondary text-lg md:hidden ${isDarkMode ? "section-heading-dark-mode-text" : ""}`}>
             Experience
           </span>
           {experiences.map((experience) => {
@@ -222,12 +247,13 @@ function Home() {
                 company={experience.company}
                 description={experience.description}
                 technologies={experience.technologies}
+                isDarkMode={isDarkMode}
               />
             );
           })}
         </section>
-        <section id="projects">
-          <span className="block mb-4 font-bold text-secondary text-lg md:hidden">
+        <section id="projects" className="mb-8">
+          <span className={`block mb-4 font-bold text-secondary text-lg md:hidden ${isDarkMode ? "section-heading-dark-mode-text" : ""}`}>
             Projects
           </span>
           {projects.map((project, index) => {
@@ -238,6 +264,7 @@ function Home() {
                 position={project.position}
                 description={project.description}
                 technologies={project.technologies}
+                isDarkMode={isDarkMode}
                 isLastItem={index === projects.length - 1}
               />
             );

@@ -1,5 +1,5 @@
 import { ExternalLink } from "lucide-react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Tag } from "@/components";
 
 interface Props {
@@ -8,6 +8,7 @@ interface Props {
   company: string;
   description: string;
   technologies: string[];
+  isDarkMode: boolean;
 }
 
 export const Experience: React.FC<Props> = ({
@@ -16,10 +17,18 @@ export const Experience: React.FC<Props> = ({
   company,
   description,
   technologies,
+  isDarkMode,
 }) => {
+
+  const [currentDarkModeState, setCurrentDarkModeState] = useState(isDarkMode);
+
+  useEffect(() => {
+    setCurrentDarkModeState(isDarkMode);
+  }, [isDarkMode]);
+
   return (
-    <div className="flex flex-col md:flex-row items-start cursor-pointer md:gap-4 hover:bg-[#f2f2f2] rounded-lg md:p-4">
-      <span className="inline-block md:w-[150px] lg:w-[250px] text-md text-secondary opacity-75 font-semibold mb-1 md:mb-0">
+    <div className="flex flex-col md:flex-row items-start cursor-pointer md:gap-4 md:hover:bg-[#f2f2f2] rounded-lg md:p-4">
+      <span className={`inline-block md:w-[150px] lg:w-[250px] text-md  ${currentDarkModeState ? "tertiary-dark-mode-text" : "text-secondary"} opacity-75 font-semibold mb-1 md:mb-0`}>
         {time}
       </span>
       <div className="flex-1 gap-2 flex flex-col">

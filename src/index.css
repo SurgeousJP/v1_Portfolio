@@ -42,3 +42,21 @@ ul.vertical-steps li.active {
   border-left: 2px solid #0057ff;
   background-color: #dde6f9;
 }
+
+/* DARK MODE */
+
+body.dark-mode{
+  background-color: #111320;
+}
+
+body.dark-mode, p.dark-mode, span.dark-mode {
+  color: #C6C6C6
+}
+
+.section-heading-dark-mode-text{
+  color: rgb(198, 198, 198);
+}
+
+.tertiary-dark-mode-text {
+  color: rgb(198, 198, 198, 0.75);
+}
