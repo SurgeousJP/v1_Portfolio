@@ -11,6 +11,9 @@ import {
 } from "lucide-react";
 import { Experience, Project } from "@/components";
 import { useEffect, useState } from "react";
+import BookstoreImg from "@/assets/Bookstore.png";
+import RecSysImg from "@/assets/RecSys.png";
+import TitanicImg from "@/assets/Titanic.png";
 
 function Home() {
   /* DATA */
@@ -54,7 +57,7 @@ function Home() {
 
   const projects = [
     {
-      image: "/src/assets/Bookstore.png",
+      image: BookstoreImg,
       name: "Bookstore",
       position: "Backend Developer",
       description:
@@ -71,7 +74,7 @@ function Home() {
       link: "https://github.com/SurgeousJP/Bookstore",
     },
     {
-      image: "/src/assets/RecSys.png",
+      image: RecSysImg,
       name: "Recommendation Project with MoviesLen Dataset",
       position: "Backend Developer",
       description:
@@ -80,7 +83,7 @@ function Home() {
       link: "https://github.com/SurgeousJP/Recommendation-Project-with-MoviesLenDataset",
     },
     {
-      image: "/src/assets/Titanic.png",
+      image: TitanicImg,
       name: "Titanic ‑ Machine Learning from Disaster",
       position: "Developer",
       description:
@@ -135,7 +138,6 @@ function Home() {
   /* UI */
   return (
     <div className="min-h-screen max-w-7xl flex flex-col md:flex-row scroll-smooth smooth-transition px-6 py-6 pt-12 mx-auto relative">
-      {/*  */}
       <aside
         id="navigator"
         className="h-full md:w-[280px] md:fixed md:z-1 md:top-0 md:pr-6 md:pt-12 relative"
