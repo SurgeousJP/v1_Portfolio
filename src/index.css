@@ -33,9 +33,14 @@ ul.vertical-steps li {
   border-bottom-right-radius: 8px;
 }
 
-ul.vertical-steps li:hover{
-  border-left: 2px solid rgba(63,75,89, 0.75);
+ul.vertical-steps li:hover {
+  border-left: 2px solid rgba(63, 75, 89, 0.75);
   background-color: #dde6f9;
+}
+
+ul.vertical-steps.dark-mode li:hover {
+  border-left: 2px solid rgba(63, 75, 89, 0.75);
+  background-color: #181c1f;
 }
 
 ul.vertical-steps li.active {
@@ -43,20 +48,20 @@ ul.vertical-steps li.active {
   background-color: #dde6f9;
 }
 
+ul.vertical-steps.dark-mode li.active {
+  border-left: 2px solid #0057ff;
+  background-color: #3d494e;
+}
+
 /* DARK MODE */
 
-body.dark-mode{
-  background-color: #111320;
+body.dark-mode {
+  background-color: #0e1113;
 }
 
-body.dark-mode, p.dark-mode, span.dark-mode {
-  color: #C6C6C6
+body.dark-mode,
+p.dark-mode,
+span.dark-mode {
+  color: #c6c6c6;
 }
 
-.section-heading-dark-mode-text{
-  color: rgb(198, 198, 198);
-}
-
-.tertiary-dark-mode-text {
-  color: rgb(198, 198, 198, 0.75);
-}

@@ -33,6 +33,8 @@ export default {
         background: "#FFFFFF",
         primary: "#0057FF",
         secondary: "#3F4B59",
+        heading: "#C6C6C6",
+        extra: "rgba(198,198,198,0.75)"
       },
       borderWidth: {
         1: "1px",

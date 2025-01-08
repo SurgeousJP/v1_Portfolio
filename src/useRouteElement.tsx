@@ -5,7 +5,7 @@ import Home from "./pages/Home";
 export default function useRouteElement() {
   const routeElement = useRoutes([
     {
-      element: <Home />,
+      element: <Home  key={'Home'}/>,
       path: path.home,
     },
   ]);
