@@ -13,6 +13,8 @@ export default {
       xl: "1280px", // Extra large devices (min-width: 1280px)
       "2xl": "1536px", // 2X extra large devices (min-width: 1536px)
       // Custom breakpoints
+      tablet: "640px", // Custom breakpoint for tablet
+      desktop: "1024px", // Custom breakpoint for desktop
     },
     extend: {
       gridTemplateColumns: {
@@ -33,8 +35,6 @@ export default {
         background: "#FFFFFF",
         primary: "#0057FF",
         secondary: "#3F4B59",
-        heading: "#C6C6C6",
-        extra: "rgba(198,198,198,0.75)"
       },
       borderWidth: {
         1: "1px",
