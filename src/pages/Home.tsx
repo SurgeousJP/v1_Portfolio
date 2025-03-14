@@ -229,7 +229,7 @@ function Home() {
             />
           </a>
           <a
-            href="https://drive.google.com/file/d/1ninJQWzDxiBrimO2HEijklqAtmgrY_4u/view?usp=sharing"
+            href="https://drive.google.com/file/d/1wA9Z2Q2Lk2uO9_hs-EIqUvWYRGphCMZ-/view?usp=drive_link"
             target="_blank"
           >
             <FileUser
